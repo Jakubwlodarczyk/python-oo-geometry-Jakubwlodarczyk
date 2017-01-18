@@ -155,7 +155,7 @@ class EquilateralTriangle(Triangle):
 
     @classmethod
     def get_area_formula(cls):
-        return "(a2 * sqrt(3))/4"
+        return "(a2 sqrt(5(5+2sqrt(5))))/4"
 
 
 
@@ -274,7 +274,7 @@ class ShapeList:
                           shape.__class__.get_perimeter_formula(), shape.get_area(),
                           shape.__class__.get_area_formula()])
             idx += 1
-        print(list_heading)
+        table.insert(0, list_heading)
         print(table)
 
     def get_largest_shape_by_perimeter(self):

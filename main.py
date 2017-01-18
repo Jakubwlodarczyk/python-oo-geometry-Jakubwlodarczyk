@@ -1,7 +1,6 @@
 import geometry
-import sys
 import os
-
+import sys
 
 def main():
 
@@ -23,17 +22,7 @@ def main():
         option = input("Select an option: ")
         if option == "1":
             os.system('clear')
-            print(
-                "LEARN GEOMETRY\n\n"
-                "What kind of shape do you want to add?:\n"
-                "\t(1) Circle\n"
-                "\t(2) Triangle\n"
-                "\t(3) Equilateral Triangle\n"
-                "\t(4) Rectangle\n"
-                "\t(5) Square\n"
-                "\t(6) Regular Pentagon\n"
-                "\t(0) Back to menu\n"
-            )
+            print_list_of_shapes()
             user_choice = input('Select an option: ')
             if user_choice == '1':
                 os.system('clear')
@@ -96,7 +85,7 @@ def main():
         elif option == "2":
             os.system('clear')
             if len(shapes.shapes) == 0:
-                input('First add some shapes!\n Enter to back to menu')
+                input('First add some shapes!\n\n Enter to back to menu')
             else:
                 print(shapes.get_shapes_table())
                 input('\nEnter = main menu')
@@ -119,17 +108,64 @@ def main():
                 print('Shape with the largest area:\n' +
                       str(shapes.get_largest_shape_by_area()) + '\tarea:',
                       round(shapes.get_largest_shape_by_area().get_area(), round_value))
-                input('\n[Enter = main menu]')
-
+                input('\nEnter to back to menu')
 
         elif option == "5":
-            # Show formulas
-            pass
+            os.system('clear')
+            print_list_of_shapes()
+            show_formulas = input("Enter number to get a shape formulas: ")
+            if show_formulas == '1':
+                shape = 'Circle'
+                area = geometry.Circle.get_area_formula()
+                perimeter = geometry.Circle.get_perimeter_formula()
+
+            elif show_formulas == '2':
+                shape = 'Triangle'
+                area = geometry.Triangle.get_area_formula()
+                perimeter = geometry.Triangle.get_perimeter_formula()
+
+            elif show_formulas == '3':
+                shape = 'Equilateral Triangle'
+                area = geometry.EquilateralTriangle.get_area_formula()
+                perimeter = geometry.Triangle.get_perimeter_formula()
+
+            elif show_formulas == '4':
+                shape = 'Rectangle'
+                area = geometry.Rectangle.get_area_formula()
+                perimeter = geometry.Rectangle.get_perimeter_formula()
+
+            elif show_formulas == '5':
+                shape = 'Square'
+                area = geometry.Square.get_area_formula()
+                perimeter = geometry.Square.get_perimeter_formula()
+
+            elif show_formulas == '6':
+                shape = 'Regular Pentagon'
+                area = geometry.RegularPentagon.get_area_formula()
+                perimeter = geometry.RegularPentagon.get_perimeter_formula()
+
+            elif show_formulas == '0':
+                main()
+
+            os.system('clear')
+            print('\n{}\nFormulas:\nArea: {}\nPerimeter: {}'.format(shape, area, perimeter))
+            input('\nEnter to back to menu')
+
         elif option == "0":
             sys.exit()
-        else:
-            raise ValueError("Wrong input")
 
+def print_list_of_shapes():
+    os.system('clear')
+    print(
+        "Please choose shape type :\n\n"
+        "\t(1) Circle\n"
+        "\t(2) Triangle\n"
+        "\t(3) Equilateral Triangle\n"
+        "\t(4) Rectangle\n"
+        "\t(5) Square\n"
+        "\t(6) Regular Pentagon\n"
+        "\t(0) Back to menu\n"
+    )
 
 def input_value():
     float_value = None
