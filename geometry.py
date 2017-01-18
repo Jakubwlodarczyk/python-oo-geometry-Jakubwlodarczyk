@@ -84,7 +84,7 @@ class Circle(Shape):
         return 2 * math.pi * self.r
 
     def __str__(self):
-        return "Circle, r={}".format(self.r)
+        return "Circle, r = {}".format(self.r)
 
     @classmethod
     def get_area_formula(cls):
@@ -106,7 +106,7 @@ class Triangle(Shape):
         c (float): the length of the third side of the triangle
     """
 
-    def __init__(self, r):
+    def __init__(self, a, b, c):
         if (a <= 0) or (b <= 0) or (c <= 0):
             raise ValueError("Value of the side of triangle is incorrect.")
         if (a >= b + c) or (b >= a + c) or (c >= a + b):
@@ -130,7 +130,7 @@ class Triangle(Shape):
         return self.a + self.b + self.c
 
     def __str__(self):
-        return "Triangle,a={}, b={}, c={}".format(self.a, self.b, self.c)
+        return "Triangle, a = {}, b = {}, c = {}".format(self.a, self.b, self.c)
 
     @classmethod
     def get_area_formula(cls):
@@ -142,7 +142,33 @@ class Triangle(Shape):
 
 
 class EquilateralTriangle(Triangle):
-    pass
+    """
+    This class represents Equilateral Triangle shape
+    Parent Class: Triangle
+    Args:
+        a (float): the length of the side of the triangle
+    """
+
+    def __init__(self, a):
+        Triangle.__init__(self, a, b=a, c=a)
+
+    def get_area(self):
+        return ((a*a) * math.sqrt(3)) / 4
+
+    def get_perimeter(self):
+        return 3 * self.a
+
+    def __str__(self):
+        return "Equilateral Triangle, a = {}".format(self.a)
+
+    @classmethod
+    def get_perimeter_formula(cls):
+        return "3 * a"
+
+    @classmethod
+    def get_area_formula(cls):
+        return "(a2 * sqrt(3))/4"
+
 
 
 class Rectangle(Shape):
