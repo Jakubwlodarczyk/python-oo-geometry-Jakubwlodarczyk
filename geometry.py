@@ -117,12 +117,6 @@ class Triangle(Shape):
         self.c = c
 
     def get_area(self):
-        """
-        calculates the area of a triangle using the formula:
-        a, b, b - length of sides of triangle
-        s = half of the length of the perimeter of the triangle
-        area = square root of ((s-a) * (b-s) * (p-c))
-        """
         s = (self.a + self.b + self.c) / 2
         return math.sqrt(s * (s - self.a) * (s - self.b) * (s - self.c))
 
@@ -151,12 +145,6 @@ class EquilateralTriangle(Triangle):
 
     def __init__(self, a):
         Triangle.__init__(self, a, b=a, c=a)
-
-    def get_area(self):
-        return ((a*a) * math.sqrt(3)) / 4
-
-    def get_perimeter(self):
-        return 3 * self.a
 
     def __str__(self):
         return "Equilateral Triangle, a = {}".format(self.a)
@@ -205,11 +193,55 @@ class Rectangle(Shape):
 
 
 class Square(Rectangle):
-    pass
+    """
+    This class represents Square shape
+    Parent Class: Rectangle
+    Args:
+        a (float): the length of the side of the square
+    """
+    def __init__(self, a):
+        Rectangle.__init__(self, a, b=a)
 
+    def __str__(self):
+        return "Square, a = {}".format(self.a)
+
+    @classmethod
+    def get_perimeter_formula(cls):
+        return "4 * a"
+
+    @classmethod
+    def get_area_formula(cls):
+        return "a * a"
 
 class RegularPentagon(Shape):
-    pass
+    """
+    This class represents Regular Pentagon shape
+    Parent Class: Shape
+    Args:
+        a (float): the length of the side of the regular pentagon
+    """
+
+    def __init__(self, a):
+        if a <= 0:
+            raise ValueError("Regular pentagon side value is incorrect.")
+        self.a = a
+
+    def get_area(self):
+        return pow(self.a, 2) * math.sqrt(5 * (5 + 2 * math.sqrt(5))) / 4
+
+    def get_perimeter(self):
+        return self.a * 5
+
+    def __str__(self):
+        return "Regular pentagon, a = {}".format(self.a)
+
+    @classmethod
+    def get_perimeter_formula(cls):
+        return "5 * a"
+
+    @classmethod
+    def get_area_formula(cls):
+        return "a2 * sqrt(5(5+2sqrt(5))))/4"
 
 
 class ShapeList:
