@@ -172,7 +172,36 @@ class EquilateralTriangle(Triangle):
 
 
 class Rectangle(Shape):
-    pass
+    """
+    This class represents Rectangle shape
+    Parent Class: Shape
+    Args:
+        a (float): the length of the first side of the rectangle
+        b (float): the length of the second side of the rectangle
+    """
+
+    def __init__(self, a, b):
+        if (a <= 0) or (b <= 0):
+            raise ValueError("Rectangle sides values are incorrect.")
+        self.a = a
+        self.b = b
+
+    def get_area(self):
+        return self.a * self.b
+
+    def get_perimeter(self):
+        return 2 * (self.a + self.b)
+
+    def __str__(self):
+        return "Rectangle, a = {}, b = {}".format(self.a, self.b)
+
+    @classmethod
+    def get_perimeter_formula(cls):
+        return "2 * (a + b)"
+
+    @classmethod
+    def get_area_formula(cls):
+        return "a * b"
 
 
 class Square(Rectangle):
