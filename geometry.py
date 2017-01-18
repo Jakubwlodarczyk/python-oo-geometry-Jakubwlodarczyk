@@ -245,4 +245,62 @@ class RegularPentagon(Shape):
 
 
 class ShapeList:
-    pass
+    '''
+    This class is meant to hold geometrical shapes (objects that inherit from Shape class).
+    Parent Class: None
+    Args:
+        shapes: list of Shape objects
+    '''
+
+    def __init__(self):
+        self.shapes = []
+
+    def add_shape(self, shape):
+        # Adds shape to shapes list
+        # Check if shape's has Shape class as it's ancestor. If not it should raise `TypeError`
+        if isinstance(shape, Shape):
+            self.shapes.append(shape)
+        else:
+            raise TypeError
+
+    def get_shapes_table(self):
+        # This method returns shapes list as string formatted into table
+
+        list_heading = ["idx", "Class", "__str__", "Perimeter", "Formula", "Area", "Formula"]
+        table = []
+        idx = 0
+        for shape in self.shapes:
+            table.append([str(idx), shape.__class__.__name__, shape.__str__(), shape.get_perimeter(),
+                          shape.__class__.get_perimeter_formula(), shape.get_area(),
+                          shape.__class__.get_area_formula()])
+            idx += 1
+        print(list_heading)
+        print(table)
+
+    def get_largest_shape_by_perimeter(self):
+        # Returns shape with largest perimeter
+
+        if self.shapes:
+            largest_shape = self.shapes[0]
+            for shape in self.shapes:
+                if shape.get_perimeter().__gt__(largest_shape.get_perimeter()):
+                    largest_shape = shape
+            return largest_shape
+        else:
+            return False
+
+    def get_largest_shape_by_area(self):
+        # Returns shape with largest area
+
+        if self.shapes:
+            largest_shape = self.shapes[0]
+            for shape in self.shapes:
+                if shape.get_area().__gt__(largest_shape.get_area()):
+                    largest_shape = shape
+            return largest_shape
+        else:
+            return False
+
+
+
+
