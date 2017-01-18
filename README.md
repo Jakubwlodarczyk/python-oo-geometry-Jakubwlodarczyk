@@ -78,7 +78,9 @@ Returns formula for the area of the shape as a string.
 Returns formula for the perimeter of the shape.
 
 Why this methods should be class methods? Edit this readme and give answer below:  
-...........................
+The "Shape" class is a parent class for all of the children classes, it's like a bolierplate for them.
+All of the shapes that we create in children classes have 'area', and 'perimeter', but we calculate it
+in a different way for a specific shape (for the specific instance of that class).
 
 ### Circle Class
 This class represents circle shape.   
