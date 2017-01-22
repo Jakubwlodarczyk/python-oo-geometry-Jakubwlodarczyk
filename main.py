@@ -2,9 +2,12 @@ import geometry
 import os
 import sys
 
-def main():
 
-    round_value = 1  # set a value needed to print round values (1-place after ',')
+def main():
+    """
+    main function contains only printing methods, and user inputs for choosing action
+    """
+
     shapes = geometry.ShapeList()  # object containing all shapes added by the user
     while True:
         os.system('clear')
@@ -97,7 +100,7 @@ def main():
             else:
                 print('Shape with the largest perimeter:\n' +
                       str(shapes.get_largest_shape_by_perimeter()) + '\tperimeter:',
-                      round(shapes.get_largest_shape_by_perimeter().get_perimeter(), round_value))
+                      round(shapes.get_largest_shape_by_perimeter().get_perimeter(), 1))
                 input('\nEnter to back to menu')
 
         elif option == "4":
@@ -107,7 +110,7 @@ def main():
             else:
                 print('Shape with the largest area:\n' +
                       str(shapes.get_largest_shape_by_area()) + '\tarea:',
-                      round(shapes.get_largest_shape_by_area().get_area(), round_value))
+                      round(shapes.get_largest_shape_by_area().get_area(), 1))
                 input('\nEnter to back to menu')
 
         elif option == "5":
@@ -148,13 +151,18 @@ def main():
                 main()
 
             os.system('clear')
-            print('\n{}\nFormulas:\nArea: {}\nPerimeter: {}'.format(shape, area, perimeter))
+            print('\n{}\n\nFormulas:\nArea: {}\nPerimeter: {}'.format(shape, area, perimeter))
             input('\nEnter to back to menu')
 
         elif option == "0":
             sys.exit()
 
+
 def print_list_of_shapes():
+    """
+    Function only for printing shapes list
+    """
+
     os.system('clear')
     print(
         "Please choose shape type :\n\n"
@@ -167,7 +175,12 @@ def print_list_of_shapes():
         "\t(0) Back to menu\n"
     )
 
+
 def input_value():
+    """
+    This function check if user input is correct , and change ',' to '.'
+    """
+
     float_value = None
 
     while float_value is None:

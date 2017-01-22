@@ -173,7 +173,7 @@ class ShapeListTester(unittest.TestCase):
         sl = ShapeList()
         s = Square(4)
         sl.add_shape(s)
-        self.assertIsInstance(sl.get_shapes_table(), str)
+        self.assertIsInstance(sl.get_shapes_table, str)
 
     def test_largest_perimeter(self):
         sl = ShapeList()
